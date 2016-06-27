@@ -1,0 +1,12 @@
+{application, erlsemaphore,
+ [
+  {description, ""},
+  {vsn, "1.0.0"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { erlsemaphore_app, []}},
+  {env, []}
+ ]}.
