@@ -1,0 +1,6 @@
+.rebar/
+.eunit/
+c_src/*.o
+c_src/*.d
+ebin/
+priv/erlsemaphore.so

@@ -108,7 +108,7 @@ nif_get(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 
     int semid = semget(ftok(filename, 1), 0, 0);
     if (semid == -1)
-      return enif_make_tuple2(env, ATOM_ERROR, ATOM_SHMEM_CREATION_FAILED);
+      return enif_make_tuple2(env, ATOM_ERROR, ATOM_NOT_FOUND);
 
     semaphore = (semaphore_hashed_t *) malloc(sizeof(semaphore_hashed_t));
     semaphore->semid = semid;

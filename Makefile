@@ -44,13 +44,32 @@ lib: compile
 	ar rcs priv/liblqueue.a c_src/*.o
 
 debug:
-	- DEBUG=true LSTATS=true $(REBAR) skip_deps=true compile
+	- DEBUG=true $(REBAR) skip_deps=true compile
 
 clean:
 	- $(REBAR) clean
 
 test: debug
 	- $(REBAR) eunit
+
+bench: bench/basho_bench erlsemaphore_bench
+
+bench/basho_bench:
+	git clone git://github.com/basho/basho_bench.git bench/basho_bench || true
+	# link all the basho_bench drivers
+	rm -f bench/basho_bench/src/basho_bench_driver_erlsemaphore.erl
+	ln -s ../../basho_bench_driver_erlsemaphore.erl \
+		  bench/basho_bench/src/basho_bench_driver_erlsemaphore.erl
+	cd bench/basho_bench; make; cd ..
+
+erlsemaphore_bench:
+	./scripts/ipcrmall
+	cd bench; \
+		rm -rf basho_bench/tests; \
+		basho_bench/basho_bench --results-dir basho_bench/tests \
+			basho_bench_erlsemaphore.config; \
+		cd basho_bench; make results; \
+		cp tests/current/summary.png erlsemaphore.summary.`date +%d%b%Y-%H%M%S`.png
 
 distclean: clean
 	- rm -rf .rebar
