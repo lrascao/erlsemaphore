@@ -27,7 +27,8 @@ endif
 .PHONY: all compile clean dialyze typer distclean \
   deps rebuild test help bench
 
-all: deps compile lib
+travis: deps compile
+all: deps compile
 
 # =============================================================================
 # Rules to build the system
@@ -39,9 +40,6 @@ deps:
 
 compile:
 	- $(REBAR) skip_deps=true compile
-
-lib: compile
-	ar rcs priv/liblqueue.a c_src/*.o
 
 debug:
 	- DEBUG=true $(REBAR) skip_deps=true compile
@@ -75,6 +73,10 @@ distclean: clean
 	- rm -rf .rebar
 	- rm -rf deps
 	- rm -rf ebin
+	- rm -rf bench/basho_bench
 	- $(REBAR) clean
 
 rebuild: distclean compile dialyze
+
+shell: deps compile
+	erl -pa ebin -s erlsemaphore_app

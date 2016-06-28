@@ -4,3 +4,5 @@ c_src/*.o
 c_src/*.d
 ebin/
 priv/erlsemaphore.so
+bench/basho_bench
+deps/
