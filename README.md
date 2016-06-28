@@ -2,6 +2,8 @@
 
 [erlsemaphore](https://github.com/lrascao/erlsemaphore) is a SystemV IPC semaphore NIF interface.
 
+[![Build Status](https://travis-ci.org/lrascao/erlsemaphore.svg?branch=develop)](https://travis-ci.org/lrascao/erlsemaphore)
+
 ## Introduction
 
 Allows for resource signalling between the Erlang VM and an external process (eg. Cnode/Cport).
