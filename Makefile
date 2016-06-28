@@ -75,6 +75,7 @@ distclean: clean
 	- rm -rf .rebar
 	- rm -rf deps
 	- rm -rf ebin
+	- rm -rf bench/basho_bench
 	- $(REBAR) clean
 
 rebuild: distclean compile dialyze
