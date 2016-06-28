@@ -49,6 +49,8 @@ ok
 
     $ make bench
 
+![28Jun2016-113202-16b01ce5](https://github.com/lrascao/erlsemaphore/blob/develop/bench/reports/28Jun2016-113202-16b01ce5/erlsemaphore.summary.28Jun2016-113202.png?raw=true)
+
 ## Copyright and License
 
 Copyright (c) 2016 Luis Miguel Mourato Rascão
